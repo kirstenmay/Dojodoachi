@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using Dojodachi.Models
+@model Character
+
+<div class="text-center">
+    <h1 class="display-4">Dojodachi</h1>
+    <h3>
+        <span>Fullness: @ViewBag.Fullness</span>
+        <span>Happiness: @ViewBag.Happiness</span>
+        <span>Energy: @ViewBag.Energy</span>
+        <span>Meals: @ViewBag.Meals</span>
+    </h3>
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="card">
+                <p> @ViewBag.message </p>
+                <div class="row">
+                    <img src= "~/img/heart.png" alt="Dojodachi">
+                </div>
+                <div class="row justify-content-center">
+                    @{
+                        if(@ViewBag.alive == "alive")
+                        {
+                            <a href="/Home/Feed" class = "btn btn-lg btn-outline-dark">Feed</a>
+                            <a href="/Home/Play" class = "btn btn-lg btn-outline-dark">Play</a>
+                            <a href="/Home/Work" class = "btn btn-lg btn-outline-dark">Work</a>
+                            <a href="/Home/Sleep" class = "btn btn-lg btn-outline-dark">Sleep</a>
+                        }
+                    }
+                </div>
+                <div class="row justify-content-center" style = "margin-top: 30px;">
+                </div>
+                @{
+                    if(@ViewBag.alive == "dead" || ViewBag.alive == "win")
+                    {
+                        <a href="/Home/Reset" class = "btn btn-outline-success">Restart</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
